@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+  :root {
+    --color-paper: #F5F0E8;
+    --color-ink: #1C1917;
+    --color-ink-light: #6B6560;
+    --color-cinnabar: #C03C2D;
+    --color-jade: #3D7A5F;
+    --color-mineral: #2D6A6A;
+    --color-amber: #C88A2A;
+  }
+
+  html {
+    font-family: 'Inter', 'SF Pro', 'IBM Plex Sans', system-ui, sans-serif;
+    color: var(--color-ink);
+    background-color: var(--color-paper);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.2;
+  }
+
+  /* Chinese accent text */
+  .font-chinese {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-mineral);
+    outline-offset: 2px;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: #2D6A6A33;
+  }
+}

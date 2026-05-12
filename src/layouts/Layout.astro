@@ -1,0 +1,45 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Check your eligibility for China\'s 240-hour visa-free transit policy. Payment setup, eSIM guide, and essential apps for your trip.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-paper-50 text-ink min-h-screen">
+    <nav class="border-b border-paper-300 bg-paper-50/80 backdrop-blur-sm sticky top-0 z-50">
+      <div class="max-w-reading mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="/" class="font-display text-xl font-bold text-ink hover:text-mineral transition-colors">
+          ChinaUS
+        </a>
+        <div class="flex gap-4 text-sm">
+          <a href="/check" class="text-ink-light hover:text-mineral transition-colors">Visa Check</a>
+          <a href="/pay" class="text-ink-light hover:text-mineral transition-colors">Payments</a>
+          <a href="/esim" class="text-ink-light hover:text-mineral transition-colors">eSIM</a>
+          <a href="/apps" class="text-ink-light hover:text-mineral transition-colors">Apps</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-paper-300 mt-16">
+      <div class="max-w-reading mx-auto px-4 py-8 text-center text-sm text-ink-light">
+        <p>Information is for reference only. Always verify with official sources before travel.</p>
+        <p class="mt-2 font-chinese text-xs">仅供参考 · 出行前请以官方信息为准</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+[
+  {
+    "id": "start",
+    "type": "question",
+    "text": "Do you have a Chinese bank account?",
+    "options": [
+      { "label": "Yes", "nextId": "has-bank" },
+      { "label": "No", "nextId": "no-bank" }
+    ]
+  },
+  {
+    "id": "has-bank",
+    "type": "question",
+    "text": "Which payment app do you prefer?",
+    "options": [
+      { "label": "Alipay", "nextId": "setup-alipay-bank" },
+      { "label": "WeChat Pay", "nextId": "setup-wechat-bank" },
+      { "label": "Not sure", "nextId": "recommend-both" }
+    ]
+  },
+  {
+    "id": "no-bank",
+    "type": "question",
+    "text": "Do you have an international Visa or Mastercard?",
+    "options": [
+      { "label": "Yes", "nextId": "has-card" },
+      { "label": "No", "nextId": "cash-only" }
+    ]
+  },
+  {
+    "id": "has-card",
+    "type": "question",
+    "text": "How long is your stay in China?",
+    "options": [
+      { "label": "1-3 days", "nextId": "short-stay" },
+      { "label": "4-10 days", "nextId": "medium-stay" }
+    ]
+  },
+  {
+    "id": "short-stay",
+    "type": "result",
+    "text": "For a short stay, Alipay Tour Pass is your best bet. Link your international card and get a prepaid balance for QR payments.",
+    "troubleshooting": [
+      "If your card is declined, try a different Visa/Mastercard. Some banks block overseas fintech transactions.",
+      "Call your bank before traveling and mention 'Tenpay' and 'Alipay' as expected merchants.",
+      "Tap-to-pay at some stores works with Apple Pay / Google Pay on Visa/Mastercard — look for the contactless symbol.",
+      "Keep some cash (200-500 RMB) as backup for taxis and small vendors."
+    ]
+  },
+  {
+    "id": "medium-stay",
+    "type": "question",
+    "text": "Are you willing to verify your identity with your passport in the app?",
+    "options": [
+      { "label": "Yes", "nextId": "verified-setup" },
+      { "label": "No, keep it simple", "nextId": "short-stay" }
+    ]
+  },
+  {
+    "id": "verified-setup",
+    "type": "action",
+    "text": "Set up both Alipay and WeChat Pay with passport verification for higher limits.",
+    "actions": [
+      "Download Alipay from your app store",
+      "Register with your phone number (international numbers work)",
+      "Go to Me → Settings → Identity Verification → Passport",
+      "Link your Visa/Mastercard under Me → Bank Cards",
+      "Download WeChat (if you don't have it already)",
+      "In WeChat, go to Me → Services → Wallet → Cards → Add Bank Card",
+      "Verify identity with passport in WeChat Pay settings",
+      "Unverified limit: 500 RMB per transaction. Passport-verified: up to 35,000 RMB per transaction.",
+      "Call your bank and whitelist 'Tenpay' (WeChat Pay's merchant name) to prevent fraud blocks."
+    ]
+  },
+  {
+    "id": "setup-alipay-bank",
+    "type": "action",
+    "text": "Link your Chinese bank account to Alipay for the full experience.",
+    "actions": [
+      "Open Alipay → Me → Bank Cards → Add Bank Card",
+      "Enter your Chinese bank card number",
+      "Complete SMS verification from your Chinese phone number",
+      "You're set — QR payments work everywhere"
+    ]
+  },
+  {
+    "id": "setup-wechat-bank",
+    "type": "action",
+    "text": "Link your Chinese bank account to WeChat Pay.",
+    "actions": [
+      "Open WeChat → Me → Services → Wallet",
+      "Tap Cards → Add Bank Card",
+      "Enter your Chinese bank card number and verify via SMS",
+      "You're set — QR payments work everywhere"
+    ]
+  },
+  {
+    "id": "recommend-both",
+    "type": "result",
+    "text": "With a Chinese bank account, set up both. Alipay is better for shopping and transport. WeChat Pay is better for restaurants and person-to-person transfers. Most places accept both.",
+    "troubleshooting": [
+      "If one app is giving trouble, the other usually works.",
+      "For DiDi (ride-hailing), Alipay integration tends to be smoother.",
+      "For splitting bills with locals, WeChat Pay's red packet feature is the norm."
+    ]
+  },
+  {
+    "id": "cash-only",
+    "type": "result",
+    "text": "Without a card or bank account, cash is your main option. Exchange currency before arriving or at the airport.",
+    "troubleshooting": [
+      "Airport exchange rates are poor. Exchange at your home bank before departure if possible.",
+      "ATMs at Chinese airports accept most international cards (UnionPay, Visa, Mastercard). Withdraw RMB directly.",
+      "Some tourist areas and hotels accept cash. But many small vendors are QR-only.",
+      "Consider asking a travel companion to help you pay via their app — you reimburse them in cash.",
+      "7-Eleven and FamilyMart in major cities often accept international contactless cards."
+    ]
+  }
+]

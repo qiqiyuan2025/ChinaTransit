@@ -1,0 +1,58 @@
+{
+  "beijing-tianjin-hebei": {
+    "name": "Beijing-Tianjin-Hebei",
+    "provinces": ["Beijing", "Tianjin", "Hebei"]
+  },
+  "yangtze-delta": {
+    "name": "Yangtze River Delta",
+    "provinces": ["Shanghai", "Jiangsu", "Zhejiang", "Anhui"]
+  },
+  "greater-bay": {
+    "name": "Greater Bay Area",
+    "provinces": ["Guangdong"]
+  },
+  "northeast": {
+    "name": "Northeast China",
+    "provinces": ["Liaoning", "Jilin", "Heilongjiang"]
+  },
+  "chengdu-chongqing": {
+    "name": "Chengdu-Chongqing",
+    "provinces": ["Sichuan", "Chongqing"]
+  },
+  "xian": {
+    "name": "Xi'an Region",
+    "provinces": ["Shaanxi"]
+  },
+  "kunming": {
+    "name": "Kunming Region",
+    "provinces": ["Yunnan"]
+  },
+  "qingdao": {
+    "name": "Qingdao Region",
+    "provinces": ["Shandong"]
+  },
+  "xiamen": {
+    "name": "Xiamen Region",
+    "provinces": ["Fujian"]
+  },
+  "wuhan": {
+    "name": "Wuhan Region",
+    "provinces": ["Hubei"]
+  },
+  "changsha": {
+    "name": "Changsha Region",
+    "provinces": ["Hunan"]
+  },
+  "guilin-nanning": {
+    "name": "Guilin-Nanning Region",
+    "provinces": ["Guangxi"]
+  },
+  "hainan": {
+    "name": "Hainan Region",
+    "provinces": ["Hainan"]
+  },
+  "urumqi": {
+    "name": "Urumqi Region",
+    "provinces": ["Xinjiang"]
+  }
+}

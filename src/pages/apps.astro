@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const apps = {
+  mustHave: [
+    {
+      name: 'WeChat',
+      nameCn: '微信',
+      category: 'Messaging + Payments',
+      description: 'The super-app. Messaging, payments, mini-programs, translation. Register with your international phone number before arriving.',
+      tip: 'Add contacts before you go — some features require being added by a China-based user.',
+    },
+    {
+      name: 'Alipay',
+      nameCn: '支付宝',
+      category: 'Payments',
+      description: 'The other payment giant. Link your international Visa/Mastercard for QR payments. Tour Pass mode for tourists.',
+      tip: 'Set up payment method before landing. See our Payment Setup guide.',
+    },
+    {
+      name: 'Amap (Gaode)',
+      nameCn: '高德地图',
+      category: 'Navigation',
+      description: 'Best maps app for China. More accurate than Google/Apple Maps for walking directions, transit, and real-time traffic. Has English interface.',
+      tip: 'Download offline maps for your destination city before your flight.',
+    },
+  ],
+  recommended: [
+    {
+      name: 'DiDi',
+      nameCn: '滴滴出行',
+      category: 'Ride-hailing',
+      description: "China's Uber. Supports international credit cards. English interface available.",
+      tip: 'Link your payment method in advance. In-app translation helps communicate with drivers.',
+    },
+    {
+      name: 'Trip.com',
+      nameCn: '携程',
+      category: 'Travel Booking',
+      description: 'Book trains, hotels, and domestic flights. English interface, accepts international cards. Better domestic coverage than Booking.com.',
+      tip: 'Book high-speed rail tickets early for popular routes (Shanghai-Beijing, etc.).',
+    },
+  ],
+  niceToHave: [
+    {
+      name: 'Meituan',
+      nameCn: '美团',
+      category: 'Food & Services',
+      description: 'Food delivery, restaurant reservations, attraction tickets. Mostly Chinese but improving English support.',
+      tip: 'Use WeChat Mini Program version if the standalone app is too complex.',
+    },
+    {
+      name: 'Pleco',
+      nameCn: '',
+      category: 'Dictionary',
+      description: 'Best Chinese-English dictionary. OCR camera feature translates signs and menus in real-time. Works offline.',
+      tip: 'Download the offline dictionary pack before your flight.',
+    },
+  ],
+};
+
+const checklist = [
+  'Download all apps on WiFi before boarding',
+  'Register WeChat and Alipay with your phone number',
+  'Link payment method in Alipay (Visa/Mastercard)',
+  'Download offline maps in Amap for your destination',
+  'Download offline dictionary in Pleco',
+  "Install and test your VPN (can't download in China)",
+  'Screenshot important booking confirmations',
+];
+---
+
+<Layout title="Essential Apps — ChinaUS">
+  <div class="max-w-reading mx-auto px-4 py-12">
+    <div class="text-center mb-10">
+      <p class="font-chinese text-ink-light text-sm mb-2">必备应用清单</p>
+      <h1 class="font-display text-4xl font-bold text-ink">Essential Apps</h1>
+      <p class="text-ink-light mt-2">Download these before you board your flight.</p>
+    </div>
+
+    <div class="space-y-8">
+      <!-- Must-have -->
+      <div>
+        <h2 class="font-display text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-cinnabar rounded-full"></span>
+          Must Have
+        </h2>
+        <div class="space-y-4">
+          {apps.mustHave.map((app) => (
+            <div class="p-5 bg-paper-100 rounded-lg border border-paper-300">
+              <div class="flex items-baseline gap-2 mb-1">
+                <h3 class="font-semibold text-lg">{app.name}</h3>
+                {app.nameCn && <span class="font-chinese text-ink-light text-sm">{app.nameCn}</span>}
+                <span class="ml-auto text-xs bg-paper-200 text-ink-light px-2 py-0.5 rounded">{app.category}</span>
+              </div>
+              <p class="text-sm text-ink-light mb-2">{app.description}</p>
+              <p class="text-xs text-mineral"><strong>Tip:</strong> {app.tip}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Recommended -->
+      <div>
+        <h2 class="font-display text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-jade rounded-full"></span>
+          Recommended
+        </h2>
+        <div class="space-y-4">
+          {apps.recommended.map((app) => (
+            <div class="p-5 bg-paper-100 rounded-lg border border-paper-300">
+              <div class="flex items-baseline gap-2 mb-1">
+                <h3 class="font-semibold text-lg">{app.name}</h3>
+                {app.nameCn && <span class="font-chinese text-ink-light text-sm">{app.nameCn}</span>}
+                <span class="ml-auto text-xs bg-paper-200 text-ink-light px-2 py-0.5 rounded">{app.category}</span>
+              </div>
+              <p class="text-sm text-ink-light mb-2">{app.description}</p>
+              <p class="text-xs text-mineral"><strong>Tip:</strong> {app.tip}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Nice to have -->
+      <div>
+        <h2 class="font-display text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-mineral rounded-full"></span>
+          Nice to Have
+        </h2>
+        <div class="space-y-4">
+          {apps.niceToHave.map((app) => (
+            <div class="p-5 bg-paper-100 rounded-lg border border-paper-300">
+              <div class="flex items-baseline gap-2 mb-1">
+                <h3 class="font-semibold text-lg">{app.name}</h3>
+                {app.nameCn && <span class="font-chinese text-ink-light text-sm">{app.nameCn}</span>}
+                <span class="ml-auto text-xs bg-paper-200 text-ink-light px-2 py-0.5 rounded">{app.category}</span>
+              </div>
+              <p class="text-sm text-ink-light mb-2">{app.description}</p>
+              <p class="text-xs text-mineral"><strong>Tip:</strong> {app.tip}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Download checklist -->
+      <div class="p-6 bg-mineral/10 rounded-xl border border-mineral mt-10">
+        <h3 class="font-semibold mb-4">Pre-Flight Checklist</h3>
+        <ul class="space-y-3">
+          {checklist.map((item) => (
+            <li class="flex gap-3 text-sm">
+              <input type="checkbox" class="mt-0.5 accent-mineral" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>

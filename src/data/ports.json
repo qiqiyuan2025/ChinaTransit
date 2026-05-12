@@ -1,0 +1,64 @@
+[
+  { "id": "PEK", "name": "Beijing Capital", "city": "Beijing", "province": "Beijing", "type": "air", "group": "beijing-tianjin-hebei" },
+  { "id": "PKX", "name": "Beijing Daxing", "city": "Beijing", "province": "Beijing", "type": "air", "group": "beijing-tianjin-hebei" },
+  { "id": "TSN", "name": "Tianjin Binhai", "city": "Tianjin", "province": "Tianjin", "type": "air", "group": "beijing-tianjin-hebei" },
+  { "id": "SJW", "name": "Shijiazhuang Zhengding", "city": "Shijiazhuang", "province": "Hebei", "type": "air", "group": "beijing-tianjin-hebei" },
+  { "id": "TIANJIN-PORT", "name": "Tianjin International Cruise Port", "city": "Tianjin", "province": "Tianjin", "type": "sea", "group": "beijing-tianjin-hebei" },
+  { "id": "QINHUANGDAO", "name": "Qinhuangdao Port", "city": "Qinhuangdao", "province": "Hebei", "type": "sea", "group": "beijing-tianjin-hebei" },
+
+  { "id": "PVG", "name": "Shanghai Pudong", "city": "Shanghai", "province": "Shanghai", "type": "air", "group": "yangtze-delta" },
+  { "id": "SHA", "name": "Shanghai Hongqiao", "city": "Shanghai", "province": "Shanghai", "type": "air", "group": "yangtze-delta" },
+  { "id": "NKG", "name": "Nanjing Lukou", "city": "Nanjing", "province": "Jiangsu", "type": "air", "group": "yangtze-delta" },
+  { "id": "HGH", "name": "Hangzhou Xiaoshan", "city": "Hangzhou", "province": "Zhejiang", "type": "air", "group": "yangtze-delta" },
+  { "id": "NGB", "name": "Ningbo Lishe", "city": "Ningbo", "province": "Zhejiang", "type": "air", "group": "yangtze-delta" },
+  { "id": "SHANGHAI-PORT", "name": "Shanghai Port", "city": "Shanghai", "province": "Shanghai", "type": "sea", "group": "yangtze-delta" },
+  { "id": "SHANGHAI-RAIL", "name": "Shanghai Railway Station", "city": "Shanghai", "province": "Shanghai", "type": "rail", "group": "yangtze-delta" },
+
+  { "id": "CAN", "name": "Guangzhou Baiyun", "city": "Guangzhou", "province": "Guangdong", "type": "air", "group": "greater-bay" },
+  { "id": "SZX", "name": "Shenzhen Bao'an", "city": "Shenzhen", "province": "Guangdong", "type": "air", "group": "greater-bay" },
+  { "id": "SWA", "name": "Jieyang Chaoshan", "city": "Jieyang", "province": "Guangdong", "type": "air", "group": "greater-bay" },
+  { "id": "ZUH", "name": "Zhuhai Jinwan", "city": "Zhuhai", "province": "Guangdong", "type": "air", "group": "greater-bay" },
+  { "id": "SHENZHEN-BAY", "name": "Shenzhen Bay Port", "city": "Shenzhen", "province": "Guangdong", "type": "land", "group": "greater-bay" },
+  { "id": "FUTIAN", "name": "Futian Port", "city": "Shenzhen", "province": "Guangdong", "type": "land", "group": "greater-bay" },
+  { "id": "HUANGGANG", "name": "Huanggang Port", "city": "Shenzhen", "province": "Guangdong", "type": "land", "group": "greater-bay" },
+  { "id": "LUOHU", "name": "Luohu Port", "city": "Shenzhen", "province": "Guangdong", "type": "land", "group": "greater-bay" },
+  { "id": "HENGQIN", "name": "Hengqin Port", "city": "Zhuhai", "province": "Guangdong", "type": "land", "group": "greater-bay" },
+  { "id": "GONGBEI", "name": "Gongbei Port", "city": "Zhuhai", "province": "Guangdong", "type": "land", "group": "greater-bay" },
+  { "id": "NANSHA", "name": "Nansha Port", "city": "Guangzhou", "province": "Guangdong", "type": "sea", "group": "greater-bay" },
+  { "id": "SHEKOU", "name": "Shekou Port", "city": "Shenzhen", "province": "Guangdong", "type": "sea", "group": "greater-bay" },
+  { "id": "WEST-KOWLOON", "name": "West Kowloon Station", "city": "Hong Kong", "province": "Guangdong", "type": "rail", "group": "greater-bay" },
+
+  { "id": "SHE", "name": "Shenyang Taoxian", "city": "Shenyang", "province": "Liaoning", "type": "air", "group": "northeast" },
+  { "id": "DLC", "name": "Dalian Zhoushuizi", "city": "Dalian", "province": "Liaoning", "type": "air", "group": "northeast" },
+  { "id": "DALIAN-PORT", "name": "Dalian Port", "city": "Dalian", "province": "Liaoning", "type": "sea", "group": "northeast" },
+  { "id": "HRB", "name": "Harbin Taiping", "city": "Harbin", "province": "Heilongjiang", "type": "air", "group": "northeast" },
+  { "id": "CGQ", "name": "Changchun Longjia", "city": "Changchun", "province": "Jilin", "type": "air", "group": "northeast" },
+
+  { "id": "CTU", "name": "Chengdu Shuangliu", "city": "Chengdu", "province": "Sichuan", "type": "air", "group": "chengdu-chongqing" },
+  { "id": "TFU", "name": "Chengdu Tianfu", "city": "Chengdu", "province": "Sichuan", "type": "air", "group": "chengdu-chongqing" },
+  { "id": "CKG", "name": "Chongqing Jiangbei", "city": "Chongqing", "province": "Chongqing", "type": "air", "group": "chengdu-chongqing" },
+
+  { "id": "XIY", "name": "Xi'an Xianyang", "city": "Xi'an", "province": "Shaanxi", "type": "air", "group": "xian" },
+
+  { "id": "KMG", "name": "Kunming Changshui", "city": "Kunming", "province": "Yunnan", "type": "air", "group": "kunming" },
+  { "id": "MOHAN", "name": "Mohan Railway Port", "city": "Xishuangbanna", "province": "Yunnan", "type": "rail", "group": "kunming" },
+
+  { "id": "TAO", "name": "Qingdao Jiaodong", "city": "Qingdao", "province": "Shandong", "type": "air", "group": "qingdao" },
+  { "id": "QINGDAO-PORT", "name": "Qingdao Port", "city": "Qingdao", "province": "Shandong", "type": "sea", "group": "qingdao" },
+
+  { "id": "XMN", "name": "Xiamen Gaoqi", "city": "Xiamen", "province": "Fujian", "type": "air", "group": "xiamen" },
+  { "id": "XIAMEN-PORT", "name": "Xiamen Port", "city": "Xiamen", "province": "Fujian", "type": "sea", "group": "xiamen" },
+
+  { "id": "WUH", "name": "Wuhan Tianhe", "city": "Wuhan", "province": "Hubei", "type": "air", "group": "wuhan" },
+
+  { "id": "CSX", "name": "Changsha Huanghua", "city": "Changsha", "province": "Hunan", "type": "air", "group": "changsha" },
+
+  { "id": "NNG", "name": "Nanning Wuxu", "city": "Nanning", "province": "Guangxi", "type": "air", "group": "guilin-nanning" },
+  { "id": "KWL", "name": "Guilin Liangjiang", "city": "Guilin", "province": "Guangxi", "type": "air", "group": "guilin-nanning" },
+  { "id": "DONGXING", "name": "Dongxing Port", "city": "Dongxing", "province": "Guangxi", "type": "land", "group": "guilin-nanning" },
+
+  { "id": "HAK", "name": "Haikou Meilan", "city": "Haikou", "province": "Hainan", "type": "air", "group": "hainan" },
+  { "id": "SYX", "name": "Sanya Phoenix", "city": "Sanya", "province": "Hainan", "type": "air", "group": "hainan" },
+
+  { "id": "URC", "name": "Urumqi Diwopu", "city": "Urumqi", "province": "Xinjiang", "type": "air", "group": "urumqi" }
+]

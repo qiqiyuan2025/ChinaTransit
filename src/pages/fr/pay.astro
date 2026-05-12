@@ -8,7 +8,7 @@ const locale: Locale = 'fr';
 const t = getTranslations(locale);
 ---
 
-<Layout title={`${t.paymentWizard.title} — ChinaTransit`} locale={locale}>
+<Layout title={`${t.paymentWizard.title} — ChinaTransit`} description={t.meta.payDescription} locale={locale}>
   <PaymentWizard client:load locale={locale} />
 </Layout>
 

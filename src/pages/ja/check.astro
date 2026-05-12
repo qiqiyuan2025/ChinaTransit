@@ -8,7 +8,7 @@ const locale: Locale = 'ja';
 const t = getTranslations(locale);
 ---
 
-<Layout title={`${t.visaChecker.title} — ChinaTransit`} locale={locale}>
+<Layout title={`${t.visaChecker.title} — ChinaTransit`} description={t.meta.checkDescription} locale={locale}>
   <VisaChecker client:load locale={locale} />
 </Layout>
 

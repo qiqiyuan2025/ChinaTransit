@@ -12,7 +12,14 @@ export const locales: Locale[] = ['en', 'ja', 'ko', 'fr'];
 export interface Translations {
   nav: { visaCheck: string; payments: string; esim: string; apps: string };
   footer: { disclaimer: string; disclaimerLocal: string };
-  meta: { siteTagline: string; defaultDescription: string };
+  meta: {
+    siteTagline: string;
+    defaultDescription: string;
+    checkDescription: string;
+    payDescription: string;
+    esimDescription: string;
+    appsDescription: string;
+  };
   home: {
     subtitleLocal: string;
     title: string;
@@ -124,6 +131,10 @@ const en: Translations = {
   meta: {
     siteTagline: 'Is China on your way?',
     defaultDescription: "Check your eligibility for China's 240-hour visa-free transit policy. Payment setup, eSIM guide, and essential apps for your trip.",
+    checkDescription: "Check if your nationality qualifies for China's 240-hour visa-free transit. Enter your route and get instant eligibility, allowed provinces, and countdown.",
+    payDescription: 'Set up WeChat Pay, Alipay, or tap-to-pay before you land in China. A quick decision tree to get you paying like a local.',
+    esimDescription: 'Get connected in China from touchdown. Compare eSIM providers, coverage, and setup guides for hassle-free mobile data.',
+    appsDescription: 'The 5 apps you actually need for China. Maps, translation, transport, and payments — download before you land.',
   },
   home: {
     subtitleLocal: '中国过境免签 240 小时',
@@ -327,6 +338,10 @@ const ja: Translations = {
   meta: {
     siteTagline: '中国を経由しませんか？',
     defaultDescription: '中国の240時間トランジットビザ免除の資格を確認。決済設定、eSIMガイド、必須アプリ情報。',
+    checkDescription: 'あなたの国籍が中国240時間トランジットビザ免除の対象か確認。ルートを入力して即座に資格、許可省、カウントダウンを取得。',
+    payDescription: '中国到着前にWeChat Pay、Alipay、タッチ決済を設定。現地のように支払うための簡単ガイド。',
+    esimDescription: '中国到着後すぐに接続。eSIMプロバイダーの比較、カバレッジ、セットアップガイド。',
+    appsDescription: '中国で本当に必要な5つのアプリ。地図、翻訳、交通、決済 — 到着前にダウンロード。',
   },
   home: {
     subtitleLocal: '中国过境免签 240 小时',
@@ -530,6 +545,10 @@ const ko: Translations = {
   meta: {
     siteTagline: '중국을 경유하시나요?',
     defaultDescription: '중국 240시간 무비자 환승 자격을 확인하세요. 결제 설정, eSIM 가이드, 필수 앱 정보.',
+    checkDescription: '귀하의 국적이 중국 240시간 무비자 환승 대상인지 확인하세요. 경로를 입력하면 자격, 허용 지역, 카운트다운을 즉시 확인할 수 있습니다.',
+    payDescription: '중국 도착 전에 WeChat Pay, Alipay 또는 탭투페이를 설정하세요. 현지인처럼 결제하는 빠른 가이드.',
+    esimDescription: '중국 도착 즉시 연결하세요. eSIM 제공업체 비교, 커버리지, 설정 가이드.',
+    appsDescription: '중국에서 실제로 필요한 5가지 앱. 지도, 번역, 교통, 결제 — 도착 전에 다운로드하세요.',
   },
   home: {
     subtitleLocal: '中国过境免签 240 小时',
@@ -733,6 +752,10 @@ const fr: Translations = {
   meta: {
     siteTagline: 'La Chine est-elle sur votre route ?',
     defaultDescription: "Vérifiez votre éligibilité au transit sans visa de 240 heures en Chine. Configuration des paiements, guide eSIM et applications essentielles.",
+    checkDescription: "Vérifiez si votre nationalité est éligible au transit sans visa de 240 heures en Chine. Entrez votre itinéraire pour connaître votre éligibilité, les provinces autorisées et le décompte.",
+    payDescription: 'Configurez WeChat Pay, Alipay ou le paiement sans contact avant votre arrivée en Chine. Guide rapide pour payer comme un local.',
+    esimDescription: 'Restez connecté en Chine dès votre atterrissage. Comparatif des fournisseurs eSIM, couverture et guides de configuration.',
+    appsDescription: "Les 5 applications indispensables en Chine. Cartes, traduction, transports et paiements — à télécharger avant d'atterrir.",
   },
   home: {
     subtitleLocal: '中国过境免签 240 小时',

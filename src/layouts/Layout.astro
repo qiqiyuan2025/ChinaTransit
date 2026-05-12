@@ -1,7 +1,7 @@
 ---
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import { type Locale } from '../i18n/translations';
-import { getTranslations, getLocalePath, getLocaleFromUrl } from '../i18n/utils';
+import { type Locale, locales } from '../i18n/translations';
+import { getTranslations, getLocalePath, getLocaleFromUrl, getPathWithoutLocale } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -12,6 +12,11 @@ interface Props {
 const locale: Locale = Astro.props.locale ?? getLocaleFromUrl(Astro.url);
 const t = getTranslations(locale);
 const { title, description = t.meta.defaultDescription } = Astro.props;
+
+const siteUrl = 'https://chinatransit.info';
+const basePath = getPathWithoutLocale(Astro.url);
+const canonicalPath = getLocalePath(basePath, locale);
+const canonicalUrl = `${siteUrl}${canonicalPath}${canonicalPath.endsWith('/') ? '' : '/'}`;
 ---
 
 <!doctype html>
@@ -22,6 +27,40 @@ const { title, description = t.meta.defaultDescription } = Astro.props;
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Hreflang alternates -->
+    {locales.map((loc) => {
+      const altPath = getLocalePath(basePath, loc);
+      const altUrl = `${siteUrl}${altPath}${altPath.endsWith('/') ? '' : '/'}`;
+      return <link rel="alternate" hreflang={loc} href={altUrl} />;
+    })}
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${getLocalePath(basePath, 'en')}${getLocalePath(basePath, 'en').endsWith('/') ? '' : '/'}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="ChinaTransit" />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : locale === 'ja' ? 'ja_JP' : locale === 'ko' ? 'ko_KR' : 'fr_FR'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ChinaTransit",
+      "url": siteUrl,
+      "description": t.meta.defaultDescription,
+      "inLanguage": locales,
+    })} />
   </head>
   <body class="bg-paper-50 text-ink min-h-screen">
     <nav class="border-b border-paper-300 bg-paper-50/80 backdrop-blur-sm sticky top-0 z-50">

@@ -7,7 +7,7 @@ const locale: Locale = 'ja';
 const t = getTranslations(locale);
 ---
 
-<Layout title={`${t.esim.title} — ChinaTransit`} locale={locale}>
+<Layout title={`${t.esim.title} — ChinaTransit`} description={t.meta.esimDescription} locale={locale}>
   <div class="max-w-reading mx-auto px-4 py-12">
     <div class="text-center mb-10">
       <p class="font-chinese text-ink-light text-sm mb-2">{t.esim.subtitleLocal}</p>

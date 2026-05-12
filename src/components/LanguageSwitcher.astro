@@ -1,0 +1,60 @@
+---
+import { locales, localeNames, type Locale } from '../i18n/translations';
+import { getLocalePath, getPathWithoutLocale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const currentPath = getPathWithoutLocale(Astro.url);
+---
+
+<div class="relative" data-lang-switcher>
+  <button
+    type="button"
+    class="flex items-center gap-1 text-sm text-ink-light hover:text-mineral transition-colors cursor-pointer"
+    aria-label="Change language"
+    data-lang-toggle
+  >
+    <span class="text-xs">🌐</span>
+    <span>{localeNames[locale]}</span>
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div
+    class="absolute right-0 top-full mt-1 bg-paper-50 border border-paper-300 rounded-lg shadow-lg py-1 min-w-[120px] hidden z-50"
+    data-lang-menu
+  >
+    {locales.map((l) => (
+      <a
+        href={getLocalePath(currentPath, l)}
+        class:list={[
+          'block px-4 py-1.5 text-sm transition-colors',
+          l === locale ? 'text-mineral font-semibold bg-paper-100' : 'text-ink-light hover:text-mineral hover:bg-paper-100',
+        ]}
+      >
+        {localeNames[l]}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-lang-switcher]').forEach((switcher) => {
+    const toggle = switcher.querySelector('[data-lang-toggle]');
+    const menu = switcher.querySelector('[data-lang-menu]');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!switcher.contains(e.target as Node)) {
+        menu.classList.add('hidden');
+      }
+    });
+  });
+</script>

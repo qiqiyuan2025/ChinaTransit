@@ -7,10 +7,13 @@ import {
   getGroupForPort,
 } from '../lib/eligibility';
 import type { EligibilityResult } from '../lib/types';
+import { getTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
 
 type Step = 'nationality' | 'entry' | 'exit' | 'result';
 
-export default function VisaChecker() {
+export default function VisaChecker({ locale = 'en' as Locale }: { locale?: Locale }) {
+  const t = getTranslations(locale);
   const [step, setStep] = useState<Step>('nationality');
   const [nationality, setNationality] = useState('');
   const [entryPort, setEntryPort] = useState('');
@@ -93,9 +96,9 @@ export default function VisaChecker() {
   return (
     <div className="max-w-reading mx-auto px-4 py-12">
       <div className="text-center mb-10">
-        <p className="font-chinese text-ink-light text-sm mb-2">过境免签资格查询</p>
+        <p className="font-chinese text-ink-light text-sm mb-2">{t.visaChecker.subtitleLocal}</p>
         <h1 className="font-display text-4xl font-bold text-ink">
-          Visa-Free Transit Check
+          {t.visaChecker.title}
         </h1>
       </div>
 
@@ -133,7 +136,7 @@ export default function VisaChecker() {
           onClick={handleBack}
           className="mb-6 text-sm text-ink-light hover:text-mineral transition-colors flex items-center gap-1"
         >
-          <span>←</span> Back
+          <span>←</span> {t.visaChecker.back}
         </button>
       )}
 
@@ -141,7 +144,7 @@ export default function VisaChecker() {
       {step === 'nationality' && (
         <div className="animate-fadeIn">
           <label className="block text-lg font-semibold mb-4">
-            What passport do you hold?
+            {t.visaChecker.passportQuestion}
           </label>
           <div className="relative">
             <select
@@ -149,7 +152,7 @@ export default function VisaChecker() {
               onChange={(e) => setNationality(e.target.value)}
               className="w-full p-4 bg-paper-100 border border-paper-300 rounded-lg text-ink text-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-mineral"
             >
-              <option value="">Select your nationality...</option>
+              <option value="">{t.visaChecker.selectNationality}</option>
               {countries.map((c) => (
                 <option key={c.code} value={c.code}>
                   {c.flag} {c.name}
@@ -161,14 +164,14 @@ export default function VisaChecker() {
             </div>
           </div>
           <p className="mt-3 text-sm text-ink-light">
-            55 nationalities are currently eligible for the 240-hour transit visa-free policy.
+            {t.visaChecker.eligibleCount}
           </p>
           <button
             onClick={() => nationality && handleNationalitySelect(nationality)}
             disabled={!nationality}
             className="mt-4 w-full p-4 bg-mineral text-paper-50 rounded-lg font-semibold hover:bg-mineral-light transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            Continue →
+            {t.visaChecker.continue}
           </button>
         </div>
       )}
@@ -177,20 +180,20 @@ export default function VisaChecker() {
       {step === 'entry' && (
         <div className="animate-fadeIn">
           <div className="mb-4 p-3 bg-paper-100 rounded-lg border border-paper-300 text-sm">
-            <span className="text-ink-light">Passport:</span>{' '}
+            <span className="text-ink-light">{t.visaChecker.passport}:</span>{' '}
             <span className="font-semibold">
               {selectedCountry?.flag} {selectedCountry?.name}
             </span>
           </div>
           <label className="block text-lg font-semibold mb-4">
-            Where will you enter China?
+            {t.visaChecker.entryQuestion}
           </label>
           <select
             value={entryPort}
             onChange={(e) => handleEntryPortSelect(e.target.value)}
             className="w-full p-4 bg-paper-100 border border-paper-300 rounded-lg text-ink text-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-mineral"
           >
-            <option value="">Select entry port...</option>
+            <option value="">{t.visaChecker.selectEntry}</option>
             {allPorts.map((p) => (
               <option key={p.id} value={p.id}>
                 {p.name} ({p.city}) — {p.type}
@@ -205,30 +208,30 @@ export default function VisaChecker() {
         <div className="animate-fadeIn">
           <div className="mb-4 space-y-2">
             <div className="p-3 bg-paper-100 rounded-lg border border-paper-300 text-sm">
-              <span className="text-ink-light">Passport:</span>{' '}
+              <span className="text-ink-light">{t.visaChecker.passport}:</span>{' '}
               <span className="font-semibold">
                 {selectedCountry?.flag} {selectedCountry?.name}
               </span>
             </div>
             <div className="p-3 bg-paper-100 rounded-lg border border-paper-300 text-sm">
-              <span className="text-ink-light">Entry:</span>{' '}
+              <span className="text-ink-light">{t.visaChecker.entryQuestion.replace('?', '')}:</span>{' '}
               <span className="font-semibold">
                 {selectedPort?.name} ({selectedPort?.city})
               </span>
             </div>
           </div>
           <label className="block text-lg font-semibold mb-2">
-            Where are you heading after China?
+            {t.visaChecker.exitQuestion}
           </label>
           <p className="text-sm text-ink-light mb-4">
-            Must be a different country/region from your origin. Hong Kong, Macau, and Taiwan count as separate regions.
+            {t.visaChecker.exitDescription}
           </p>
           <select
             value={exitDestination}
             onChange={(e) => handleExitSelect(e.target.value)}
             className="w-full p-4 bg-paper-100 border border-paper-300 rounded-lg text-ink text-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-mineral"
           >
-            <option value="">Select exit destination...</option>
+            <option value="">{t.visaChecker.selectExit}</option>
             {exitOptions.map((o) => (
               <option key={o.code} value={o.code}>
                 {o.label}
@@ -242,16 +245,16 @@ export default function VisaChecker() {
       {step === 'result' && result && (
         <div className="animate-fadeIn">
           {result.eligible ? (
-            <EligibleResult result={result} port={selectedPort!} />
+            <EligibleResult result={result} port={selectedPort!} t={t} />
           ) : (
-            <IneligibleResult result={result} onReset={handleReset} />
+            <IneligibleResult result={result} onReset={handleReset} t={t} />
           )}
 
           <button
             onClick={handleReset}
             className="mt-8 w-full p-3 border border-paper-300 rounded-lg text-ink-light hover:bg-paper-100 transition-colors text-sm"
           >
-            Check another route
+            {t.visaChecker.checkAnother}
           </button>
         </div>
       )}
@@ -262,9 +265,11 @@ export default function VisaChecker() {
 function EligibleResult({
   result,
   port,
+  t,
 }: {
   result: EligibilityResult;
   port: { name: string; city: string };
+  t: ReturnType<typeof getTranslations>;
 }) {
   return (
     <div className="space-y-6">
@@ -276,24 +281,24 @@ function EligibleResult({
           </div>
         </div>
         <h2 className="font-display text-3xl font-bold text-jade mb-1">
-          Eligible
+          {t.visaChecker.eligible}
         </h2>
-        <p className="font-chinese text-jade text-sm">符合过境免签条件</p>
+        <p className="font-chinese text-jade text-sm">{t.visaChecker.eligibleLocal}</p>
       </div>
 
       {/* Details */}
       <div className="space-y-4">
         <div className="p-4 bg-paper-100 rounded-lg border border-paper-300">
           <h3 className="font-semibold text-sm text-ink-light mb-2">
-            Duration
+            {t.visaChecker.duration}
           </h3>
-          <p className="text-2xl font-display font-bold">{result.hours} hours</p>
+          <p className="text-2xl font-display font-bold">{result.hours} {t.visaChecker.hours}</p>
           <p className="text-sm text-ink-light mt-1">{result.clockStart}</p>
         </div>
 
         <div className="p-4 bg-paper-100 rounded-lg border border-paper-300">
           <h3 className="font-semibold text-sm text-ink-light mb-2">
-            Accessible Provinces
+            {t.visaChecker.accessibleProvinces}
           </h3>
           <p className="font-semibold">{result.regionalGroup}</p>
           <div className="flex flex-wrap gap-2 mt-2">
@@ -310,7 +315,7 @@ function EligibleResult({
 
         <div className="p-4 bg-amber/10 rounded-lg border border-amber">
           <h3 className="font-semibold text-sm text-amber-dark mb-2">
-            Important Rules
+            {t.visaChecker.importantRules}
           </h3>
           <ul className="space-y-2">
             {result.restrictions.map((r, i) => (
@@ -328,7 +333,7 @@ function EligibleResult({
           rel="noopener noreferrer"
           className="block p-4 bg-mineral text-paper-50 rounded-lg text-center font-semibold hover:bg-mineral-light transition-colors"
         >
-          Fill Out Digital Arrival Card →
+          {t.visaChecker.arrivalCard}
         </a>
       </div>
     </div>
@@ -338,29 +343,18 @@ function EligibleResult({
 function IneligibleResult({
   result,
   onReset,
+  t,
 }: {
   result: EligibilityResult;
   onReset: () => void;
+  t: ReturnType<typeof getTranslations>;
 }) {
-  const messages: Record<string, { title: string; hint: string }> = {
-    NATIONALITY_INELIGIBLE: {
-      title: 'Not Eligible',
-      hint: 'Your nationality is not currently covered by the 240-hour transit visa-free policy. You may need a standard visa — check with your nearest Chinese embassy or consulate.',
-    },
-    PORT_PAIR_INVALID: {
-      title: 'Invalid Route',
-      hint: 'The entry and exit ports must be within the same regional group. Try selecting a different entry port or check which ports belong to each region.',
-    },
-    SAME_COUNTRY_EXIT: {
-      title: 'Same-Country Exit',
-      hint: 'Your exit destination must be a different country from your origin. Try selecting a different destination. Hong Kong, Macau, and Taiwan count as separate regions.',
-    },
-  };
+  const errorCode = result.errorCode as keyof typeof t.visaChecker.errors | undefined;
+  const info = (errorCode && t.visaChecker.errors[errorCode])
+    ? t.visaChecker.errors[errorCode]
+    : t.visaChecker.errors.default;
 
-  const info = messages[result.errorCode || ''] || {
-    title: 'Not Eligible',
-    hint: result.errorMessage || '',
-  };
+  const hint = 'hint' in info ? info.hint : (result.errorMessage || '');
 
   return (
     <div className="text-center p-8 bg-cinnabar/10 border-2 border-cinnabar rounded-xl">
@@ -372,8 +366,8 @@ function IneligibleResult({
       <h2 className="font-display text-3xl font-bold text-cinnabar mb-1">
         {info.title}
       </h2>
-      <p className="font-chinese text-cinnabar text-sm mb-4">不符合条件</p>
-      <p className="text-ink-light text-sm max-w-md mx-auto">{info.hint}</p>
+      <p className="font-chinese text-cinnabar text-sm mb-4">{t.visaChecker.notEligibleLocal}</p>
+      <p className="text-ink-light text-sm max-w-md mx-auto">{hint}</p>
     </div>
   );
 }

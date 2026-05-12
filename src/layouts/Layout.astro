@@ -1,14 +1,21 @@
 ---
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import { type Locale } from '../i18n/translations';
+import { getTranslations, getLocalePath, getLocaleFromUrl } from '../i18n/utils';
+
 interface Props {
   title: string;
   description?: string;
+  locale?: Locale;
 }
 
-const { title, description = 'Check your eligibility for China\'s 240-hour visa-free transit policy. Payment setup, eSIM guide, and essential apps for your trip.' } = Astro.props;
+const locale: Locale = Astro.props.locale ?? getLocaleFromUrl(Astro.url);
+const t = getTranslations(locale);
+const { title, description = t.meta.defaultDescription } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,14 +26,15 @@ const { title, description = 'Check your eligibility for China\'s 240-hour visa-
   <body class="bg-paper-50 text-ink min-h-screen">
     <nav class="border-b border-paper-300 bg-paper-50/80 backdrop-blur-sm sticky top-0 z-50">
       <div class="max-w-reading mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/" class="font-display text-xl font-bold text-ink hover:text-mineral transition-colors">
+        <a href={getLocalePath('/', locale)} class="font-display text-xl font-bold text-ink hover:text-mineral transition-colors">
           ChinaTransit
         </a>
-        <div class="flex gap-4 text-sm">
-          <a href="/check" class="text-ink-light hover:text-mineral transition-colors">Visa Check</a>
-          <a href="/pay" class="text-ink-light hover:text-mineral transition-colors">Payments</a>
-          <a href="/esim" class="text-ink-light hover:text-mineral transition-colors">eSIM</a>
-          <a href="/apps" class="text-ink-light hover:text-mineral transition-colors">Apps</a>
+        <div class="flex items-center gap-4 text-sm">
+          <a href={getLocalePath('/check', locale)} class="text-ink-light hover:text-mineral transition-colors">{t.nav.visaCheck}</a>
+          <a href={getLocalePath('/pay', locale)} class="text-ink-light hover:text-mineral transition-colors">{t.nav.payments}</a>
+          <a href={getLocalePath('/esim', locale)} class="text-ink-light hover:text-mineral transition-colors">{t.nav.esim}</a>
+          <a href={getLocalePath('/apps', locale)} class="text-ink-light hover:text-mineral transition-colors">{t.nav.apps}</a>
+          <LanguageSwitcher locale={locale} />
         </div>
       </div>
     </nav>
@@ -37,8 +45,8 @@ const { title, description = 'Check your eligibility for China\'s 240-hour visa-
 
     <footer class="border-t border-paper-300 mt-16">
       <div class="max-w-reading mx-auto px-4 py-8 text-center text-sm text-ink-light">
-        <p>Information is for reference only. Always verify with official sources before travel.</p>
-        <p class="mt-2 font-chinese text-xs">仅供参考 · 出行前请以官方信息为准</p>
+        <p>{t.footer.disclaimer}</p>
+        <p class="mt-2 font-chinese text-xs">{t.footer.disclaimerLocal}</p>
       </div>
     </footer>
   </body>

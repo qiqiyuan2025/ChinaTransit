@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   checkEligibility,
   getAllCountries,
@@ -18,6 +18,18 @@ export default function VisaChecker() {
   const [result, setResult] = useState<EligibilityResult | null>(null);
 
   const countries = useMemo(() => getAllCountries(), []);
+
+  // Prefill nationality from IP geolocation
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.country_code && countries.some((c) => c.code === data.country_code)) {
+          setNationality(data.country_code);
+        }
+      })
+      .catch(() => {}); // Silent fail — user picks manually
+  }, [countries]);
   const allPorts = useMemo(() => getAllPorts(), []);
 
   // After entry port is selected, show only exit destinations (countries + HK/MO/TW)
@@ -134,7 +146,7 @@ export default function VisaChecker() {
           <div className="relative">
             <select
               value={nationality}
-              onChange={(e) => handleNationalitySelect(e.target.value)}
+              onChange={(e) => setNationality(e.target.value)}
               className="w-full p-4 bg-paper-100 border border-paper-300 rounded-lg text-ink text-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-mineral"
             >
               <option value="">Select your nationality...</option>
@@ -151,6 +163,13 @@ export default function VisaChecker() {
           <p className="mt-3 text-sm text-ink-light">
             55 nationalities are currently eligible for the 240-hour transit visa-free policy.
           </p>
+          <button
+            onClick={() => nationality && handleNationalitySelect(nationality)}
+            disabled={!nationality}
+            className="mt-4 w-full p-4 bg-mineral text-paper-50 rounded-lg font-semibold hover:bg-mineral-light transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            Continue →
+          </button>
         </div>
       )}
 
